@@ -1,0 +1,84 @@
+{
+  "name": "mado-i18n-source-viewer",
+  "displayName": "mado-i18n-source-viewer",
+  "description": "",
+  "version": "0.0.1",
+  "type": "module",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.cjs",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mado-i18n-source-viewer.openSource",
+        "title": "Mado: Open Corresponding i18n Source File"
+      }
+    ],
+    "configuration": {
+      "title": "Mado i18n Source Viewer",
+      "properties": {
+        "mado-i18n-source-viewer.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enables/Disables this extension."
+        },
+        "mado-i18n-source-viewer.rules": {
+          "type": "array",
+          "default": [],
+          "description": "Rules to map target i18n files to source files.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "type": "string",
+                "description": "RegExp to match the target file path."
+              },
+              "source": {
+                "type": "string",
+                "description": "Path pattern for the source file. Use $1, $2 for captures."
+              }
+            }
+          }
+        },
+        "mado-i18n-source-viewer.autoOpenOn": {
+          "type": "string",
+          "enum": [
+            "onEdit",
+            "onOpen",
+            "manual"
+          ],
+          "default": "onEdit",
+          "description": "Trigger for automatically opening the source file."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsdown",
+    "watch": "tsdown --watch",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.103.0",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.6.0",
+    "eslint": "^9.32.0",
+    "tsdown": "^0.14.2",
+    "typescript": "^5.9.2"
+  }
+}

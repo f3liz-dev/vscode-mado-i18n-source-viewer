@@ -1,0 +1,40 @@
+// See https://go.microsoft.com/fwlink/?LinkId=733558
+// for the documentation about the tasks.json format
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "watch",
+			"problemMatcher": {
+                // "tsdown"の出力を監視するためのカスタム定義
+                "owner": "tsdown-watch",
+                "fileLocation": "relative",
+                "pattern": {
+                    // TypeScriptのエラーを検出するための正規表現
+                    "regexp": "^([^:]+):(\\d+):(\\d+):\\s+(error|warning|info):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                },
+                "background": {
+                    "activeOnStart": true,
+                    // この正規表現でビルドの開始を検知
+                    "beginsPattern": "^ℹ Build start",
+                    // この正規表現でビルドの完了（成功）を検知
+                    "endsPattern": "^✔ Build complete"
+                }
+            },
+			"isBackground": true,
+			"presentation": {
+				"reveal": "never"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
