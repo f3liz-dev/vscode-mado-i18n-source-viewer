@@ -3,7 +3,7 @@
   "displayName": "mado-i18n-source-viewer",
   "repository": {"url":"git+https://github.com/f3liz-dev/vscode-mado-i18n-source-viewer.git","type": "git"},
   "description": "",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "engines": {
     "vscode": "^1.103.0"
