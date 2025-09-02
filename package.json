@@ -1,6 +1,7 @@
 {
   "name": "mado-i18n-source-viewer",
   "displayName": "mado-i18n-source-viewer",
+  "repository": {"url":"git+https://github.com/f3liz-dev/vscode-mado-i18n-source-viewer.git","type": "git"},
   "description": "",
   "version": "0.0.1",
   "type": "module",
